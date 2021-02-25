@@ -14,10 +14,16 @@
 
         <SearchView
             android:id="@+id/simpleSearchView"
-            android:layout_width="match_parent"
+            android:layout_width="300sp"
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
             android:queryHint="Search Here" />
+        <Button
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:text="Profile"></Button>
     </LinearLayout>
 
     <LinearLayout
@@ -27,20 +33,7 @@
         tools:layout_editor_absoluteX="183dp"
         tools:layout_editor_absoluteY="375dp"
         android:layout_marginTop="65sp">
-        <Button
-            android:id="@+id/profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:text="Profile"></Button>
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:layout_marginLeft="10sp">
 
-        </Button>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

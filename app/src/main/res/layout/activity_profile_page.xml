@@ -1,54 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfilePage">
 
- <RelativeLayout
-     android:id="@+id/profile"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content">
 
-     <Button
-         android:id="@+id/logout"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginLeft="20dp"
-         android:layout_marginTop="20dp"
-         android:text="Logout"></Button>
 
-     <ImageView
-         android:id="@+id/imageView"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="50dp"
-         android:layout_below="@+id/logout"
-         android:layout_weight="1"
-         android:layout_centerHorizontal="true"
-         tools:srcCompat="@tools:sample/avatars" />
-    <TextView
-        android:id="@+id/name"
-        android:layout_below="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:text="Name: "
-        android:textColor="@color/black"
-        android:textSize="30dp"></TextView>
-     <TextView
-         android:id="@+id/userName"
-         android:layout_below="@+id/imageView"
-         android:layout_toRightOf="@+id/name"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginLeft="20dp"
-         android:layout_marginTop="50dp"
-         android:hint="Full Name"
-         android:textSize="30dp"
-         ></TextView>
+
+    <RelativeLayout
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="500sp">
+
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:layout_centerHorizontal="true"
+            tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_below="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Name: "
+            android:textColor="@color/black"
+            android:textSize="30dp"></TextView>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_below="@+id/imageView"
+            android:layout_toRightOf="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:hint="Full Name"
+            android:textSize="30dp"
+            ></TextView>
         <TextView
             android:id="@+id/utaId"
             android:layout_below="@+id/name"
@@ -71,31 +67,43 @@
             android:textSize="30dp"
             ></TextView>
 
-     <TextView
-         android:id="@+id/utaEmail"
-         android:layout_below="@+id/utaId"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginLeft="50dp"
-         android:layout_marginTop="20dp"
-         android:text="UTA Email: "
-         android:textColor="@color/black"
-         android:textSize="30dp"></TextView>
-     <TextView
-         android:id="@+id/userUtaEmail"
-         android:layout_below="@+id/userUtaId"
-         android:layout_toRightOf="@+id/utaEmail"
-         android:layout_marginLeft="20dp"
-         android:layout_marginTop="20dp"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:hint="User UTA Id"
-         android:textSize="30dp"
-         ></TextView>
+        <TextView
+            android:id="@+id/utaEmail"
+            android:layout_below="@+id/utaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:text="UTA Email: "
+            android:textColor="@color/black"
+            android:textSize="30dp"></TextView>
+        <TextView
+            android:id="@+id/userUtaEmail"
+            android:layout_below="@+id/userUtaId"
+            android:layout_toRightOf="@+id/utaEmail"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="User UTA Id"
+            android:textSize="30dp"
+            ></TextView>
 
 
 
- </RelativeLayout>
 
 
-</LinearLayout>
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="175sp"
+        android:layout_marginTop="550sp"
+
+        android:text="Logout"></Button>
+
+</RelativeLayout>
