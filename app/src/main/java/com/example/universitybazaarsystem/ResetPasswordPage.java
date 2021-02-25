@@ -15,7 +15,7 @@ public class ResetPasswordPage extends AppCompatActivity {
 
     private EditText newPassword;
     private EditText confirmNewPassword;
-    private EditText user;
+    //private String user;
     private Button submitNewPasswordButton;
     DatabaseHelper dbHelper;
 
@@ -27,7 +27,7 @@ public class ResetPasswordPage extends AppCompatActivity {
         newPassword = findViewById(R.id.newPassword);
         confirmNewPassword = findViewById(R.id.confirmNewPassword);
         submitNewPasswordButton = findViewById(R.id.submitNewPass);
-        user = findViewById(R.id.forgotUTAId);
+
         dbHelper = new DatabaseHelper(this);
 
         submitNewPasswordButton.setOnClickListener(new View.OnClickListener() {
@@ -35,21 +35,23 @@ public class ResetPasswordPage extends AppCompatActivity {
             public void onClick(View v) {
                 String newPass = newPassword.getText().toString();
                 String confirmPass = confirmNewPassword.getText().toString();
-                String userId = user.getText().toString();
+
+                Intent intent = getIntent();
+                String userId = intent.getStringExtra("userId");
 
                 if(newPass.equals("") || confirmPass.equals("")){
-                    Toast.makeText(ResetPasswordPage.this,"Please fill all the details",Toast.LENGTH_SHORT);
+                    Toast.makeText(ResetPasswordPage.this,"Please fill all the details",Toast.LENGTH_SHORT).show();
                 }else if(!newPass.equals(confirmPass)){
-                    Toast.makeText(ResetPasswordPage.this,"Passwords does not match!", Toast.LENGTH_SHORT);
+                    Toast.makeText(ResetPasswordPage.this,"Passwords does not match!", Toast.LENGTH_SHORT).show();
                 }else{
 
                     boolean updated = dbHelper.updatePassword(userId,newPass);
                     if(updated){
-                        Toast.makeText(ResetPasswordPage.this,"Your password has been updated",Toast.LENGTH_SHORT);
-                        Intent intent = new Intent(ResetPasswordPage.this,MainActivity.class);
-                        startActivity(intent);
+                        Toast.makeText(ResetPasswordPage.this,"Your password has been updated",Toast.LENGTH_SHORT).show();
+                        Intent in = new Intent(ResetPasswordPage.this,MainActivity.class);
+                        startActivity(in);
                     }else{
-                        Toast.makeText(ResetPasswordPage.this,"Could not update your password. Try Again!",Toast.LENGTH_SHORT);
+                        Toast.makeText(ResetPasswordPage.this,"Could not update your password. Try Again!",Toast.LENGTH_SHORT).show();
                     }
 
 

@@ -14,7 +14,7 @@ public class ForgotPassordPage extends AppCompatActivity {
 
     private EditText forgottenUtaId;
     private Button  submitButton;
-    DatabaseHelper dbhelp;
+    DatabaseHelper dbHelper;
 
 
 
@@ -25,7 +25,9 @@ public class ForgotPassordPage extends AppCompatActivity {
 
         forgottenUtaId = findViewById(R.id.forgotUTAId);
         submitButton = findViewById(R.id.submitbutton);
-        dbhelp = new DatabaseHelper(this);
+        dbHelper = new DatabaseHelper(this);
+
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,12 +36,14 @@ public class ForgotPassordPage extends AppCompatActivity {
                 if(forgottenUTAID.equals("")){
                     Toast.makeText(ForgotPassordPage.this,"Please Enter your UTA ID",Toast.LENGTH_SHORT).show();
                 }else{
-                    boolean userFound = dbhelp.checkUser(forgottenUTAID);
+
+                    boolean userFound = dbHelper.checkUser(forgottenUTAID);
                     if(userFound){
                         Intent intent = new Intent(ForgotPassordPage.this,ResetPasswordPage.class);
+                        intent.putExtra("userId",forgottenUTAID);
                         startActivity(intent);
                     }else{
-                        Toast.makeText(ForgotPassordPage.this,"User does not exist",Toast.LENGTH_SHORT);
+                        Toast.makeText(ForgotPassordPage.this,"User does not exist",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
