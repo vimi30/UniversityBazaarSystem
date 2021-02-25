@@ -84,6 +84,7 @@
                 >
 
                 <TextView
+                    android:id="@+id/comunityTab"
                     android:layout_width="wrap_content"
                     android:layout_height="175sp"
                     android:text="Community"
@@ -106,6 +107,7 @@
                 >
 
                 <TextView
+                    android:id="@+id/clubTab"
                     android:layout_width="wrap_content"
                     android:layout_height="175sp"
                     android:text="Clubs"
@@ -127,6 +129,7 @@
                 >
 
                 <TextView
+                    android:id="@+id/peopleTab"
                     android:layout_width="wrap_content"
                     android:layout_height="175sp"
                     android:text="People"
@@ -149,6 +152,7 @@
                 >
 
                 <TextView
+                    android:id="@+id/buy_sellTab"
                     android:layout_width="wrap_content"
                     android:layout_height="175sp"
                     android:text="Buy/Sell"

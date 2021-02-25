@@ -48,6 +48,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 if(Name.equals("") || utaId.equals("") || utaMail.equals("") || password.equals("") || ConfirmPassword.equals("")){
                     Toast.makeText(RegistrationActivity.this,"enter all the details",Toast.LENGTH_LONG).show();
+                }else if(!utaId.startsWith("100")){
+                    Toast.makeText(RegistrationActivity.this,"Please Enter a valid ID",Toast.LENGTH_SHORT).show();
+                }else if(utaId.length()!=10){
+                    Toast.makeText(RegistrationActivity.this,"Your UTA ID should contain 10 digits",Toast.LENGTH_SHORT).show();
+                }else if(!utaMail.endsWith("@mavs.uta.edu")){
+
+                    Toast.makeText(RegistrationActivity.this,"You must provide your UTA mail Id ",Toast.LENGTH_SHORT).show();
+
                 }else if(password.equals(ConfirmPassword)){
 
                     boolean checkuser = dbHelper.checkUser(utaId);
