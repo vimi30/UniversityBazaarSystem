@@ -33,6 +33,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"
             android:text="Profile"></Button>
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:layout_marginLeft="10sp">
+
+        </Button>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

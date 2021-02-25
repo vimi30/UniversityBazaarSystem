@@ -10,11 +10,21 @@
      android:id="@+id/profile"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content">
+
+     <Button
+         android:id="@+id/logout"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="20dp"
+         android:layout_marginTop="20dp"
+         android:text="Logout"></Button>
+
      <ImageView
          android:id="@+id/imageView"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_marginTop="50dp"
+         android:layout_below="@+id/logout"
          android:layout_weight="1"
          android:layout_centerHorizontal="true"
          tools:srcCompat="@tools:sample/avatars" />
