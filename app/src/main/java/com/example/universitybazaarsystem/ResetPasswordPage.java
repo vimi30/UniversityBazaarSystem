@@ -41,6 +41,10 @@ public class ResetPasswordPage extends AppCompatActivity {
 
                 if(newPass.equals("") || confirmPass.equals("")){
                     Toast.makeText(ResetPasswordPage.this,"Please fill all the details",Toast.LENGTH_SHORT).show();
+                }else if(newPass.length()<8){
+
+                    Toast.makeText(ResetPasswordPage.this,"Password should be at least 8 character long",Toast.LENGTH_SHORT).show();
+
                 }else if(!newPass.equals(confirmPass)){
                     Toast.makeText(ResetPasswordPage.this,"Passwords does not match!", Toast.LENGTH_SHORT).show();
                 }else{

@@ -56,6 +56,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     Toast.makeText(RegistrationActivity.this,"You must provide your UTA mail Id ",Toast.LENGTH_SHORT).show();
 
+                }else if(password.length()<8){
+
+                    Toast.makeText(RegistrationActivity.this,"Password must be at least 8 character long",Toast.LENGTH_SHORT).show();
+
                 }else if(password.equals(ConfirmPassword)){
 
                     boolean checkuser = dbHelper.checkUser(utaId);

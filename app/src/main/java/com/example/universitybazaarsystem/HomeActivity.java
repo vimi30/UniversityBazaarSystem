@@ -10,10 +10,10 @@ import android.widget.TextView;
 
  public class HomeActivity extends AppCompatActivity {
     private Button profileButton;
-    //private TextView people;
-     //private TextView community;
-     //private TextView clubs;
-     //private TextView buy_sell;
+    private TextView people;
+    private TextView community;
+    private TextView clubs;
+    private TextView buy_sell;
     //Button logoutButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +21,10 @@ import android.widget.TextView;
         setContentView(R.layout.activity_home);
 
 
-       /* people.findViewById(R.id.peopleTab);
-        community.findViewById(R.id.comunityTab);
-        clubs.findViewById(R.id.clubTab);
-        buy_sell.findViewById(R.id.buy_sellTab);*/
+        people = findViewById(R.id.peopleTab);
+        community = findViewById(R.id.comunityTab);
+        clubs = findViewById(R.id.clubTab);
+        buy_sell = findViewById(R.id.buy_sellTab);
 
         profileButton = findViewById(R.id.profile);
 
@@ -35,7 +35,7 @@ import android.widget.TextView;
             }
         });
 
-       /* people.setOnClickListener(new View.OnClickListener() {
+        people.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, PeoplePage.class);
@@ -66,7 +66,7 @@ import android.widget.TextView;
                 Intent intent = new Intent(HomeActivity.this, BuySellPage.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
     }
     public void openProfilePage(){
