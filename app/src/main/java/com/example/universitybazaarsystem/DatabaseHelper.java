@@ -117,11 +117,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from sellProductInfo",null);
-
         return cursor;
 
     }
-
 
 
 

@@ -18,12 +18,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     private Context context;
     private ArrayList<Product> productList;
+    OnProductListener onProductListener;
 
-    CustomAdapter(Context context, ArrayList productList){
+    CustomAdapter(Context context, ArrayList productList,OnProductListener onProductListener){
 
         this.context = context;
         this.productList = new ArrayList<Product>(productList);
-
+        this.onProductListener = onProductListener;
     }
 
     @NonNull
@@ -33,7 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.product_items_layout,parent,false);
 
-        return new MyViewHolder(view);
+        return new MyViewHolder(view,onProductListener);
     }
 
     @Override
@@ -53,17 +54,35 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         return productList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView proName, proPrice;
         ImageView proImage;
+        OnProductListener onProductListener;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView,OnProductListener onProductListener) {
             super(itemView);
             proName = itemView.findViewById(R.id.product_name);
             proPrice = itemView.findViewById(R.id.product_price);
             proImage = itemView.findViewById(R.id.product_image);
+            this.onProductListener = onProductListener;
+
+            itemView.setOnClickListener(this);
 
         }
+
+        @Override
+        public void onClick(View v) {
+
+            onProductListener.onProductClick(getAdapterPosition());
+
+        }
+    }
+
+
+    public interface OnProductListener{
+
+        void onProductClick(int position);
+
     }
 }
