@@ -55,7 +55,7 @@ import android.widget.TextView;
         clubs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ClubsPage.class);
+                Intent intent = new Intent(HomeActivity.this, ClubsListingPage.class);
                 startActivity(intent);
             }
         });
