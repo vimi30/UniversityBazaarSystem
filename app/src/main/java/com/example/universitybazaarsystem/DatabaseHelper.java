@@ -20,6 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("create Table userInfo(userName TEXT, utaID TEXT primary key, utaMail TEXT, password TEXT )");
+        db.execSQL("create Table sellProductInfo(utaID TEXT, productName TEXT, productPrice TEXT, productDescription TEXT, productImage BLOB )");
 
     }
 
@@ -27,6 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         db.execSQL("drop Table if exists userInfo");
+        db.execSQL("drop Table if exists sellProductInfo");
 
     }
 
@@ -89,5 +91,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
+    public boolean insertProductData(String uta_ID, String product_name, String product_price, String product_description, byte[] product_image){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("utaID", uta_ID);
+        cv.put("productName",product_name);
+        cv.put("productPrice",product_price);
+        cv.put("productDescription",product_description);
+        cv.put("productImage",product_image);
+
+
+        long inserted = db.insert("sellProductInfo",null,cv);
+
+        if(inserted==-1){
+            return false;
+        } else{
+            return true;
+        }
+    }
+
+
+    public Cursor getCursorForProductList(){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from sellProductInfo",null);
+
+        return cursor;
+
+    }
+
+
+
 
 }

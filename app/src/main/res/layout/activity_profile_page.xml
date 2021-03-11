@@ -23,7 +23,7 @@
             android:layout_marginTop="50dp"
             android:layout_weight="1"
             android:visibility="visible"
-            tools:src="@drawable/index" />
+            android:background="@drawable/index" />
         <TextView
             android:id="@+id/name"
             android:layout_below="@+id/imageView"
