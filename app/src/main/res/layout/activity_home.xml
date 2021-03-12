@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -81,12 +81,14 @@
                 app:cardCornerRadius="10sp"
                 android:layout_margin="10sp"
                 app:cardBackgroundColor="#c6ebff"
+                android:layout_height="150sp"
+                android:layout_width="170sp"
                 >
 
                 <TextView
                     android:id="@+id/comunityTab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="175sp"
+                    android:layout_width="150sp"
+                    android:layout_height="170sp"
                     android:text="Community"
                     android:textSize="25sp"
                     android:textAlignment="center"
@@ -104,11 +106,13 @@
                 app:cardCornerRadius="10sp"
                 android:layout_margin="10sp"
                 app:cardBackgroundColor="#c6ebff"
+                android:layout_height="150sp"
+                android:layout_width="170sp"
                 >
 
                 <TextView
                     android:id="@+id/clubTab"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="175sp"
                     android:text="Clubs"
                     android:textSize="25sp"
@@ -126,11 +130,13 @@
                 app:cardCornerRadius="10sp"
                 android:layout_margin="10sp"
                 app:cardBackgroundColor="#c6ebff"
+                android:layout_height="150sp"
+                android:layout_width="170sp"
                 >
 
                 <TextView
                     android:id="@+id/peopleTab"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="175sp"
                     android:text="People"
                     android:textSize="25sp"
@@ -149,11 +155,13 @@
                 app:cardCornerRadius="10sp"
                 android:layout_margin="10sp"
                 app:cardBackgroundColor="#c6ebff"
+                android:layout_height="150sp"
+                android:layout_width="170sp"
                 >
 
                 <TextView
                     android:id="@+id/buy_sellTab"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="175sp"
                     android:text="Buy/Sell"
                     android:textSize="25sp"
@@ -175,4 +183,4 @@
 
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

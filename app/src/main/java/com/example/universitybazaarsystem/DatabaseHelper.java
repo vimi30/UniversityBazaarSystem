@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -55,6 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from userInfo where utaID = ?", new String[] {uta_ID});
+
         if(cursor.getCount()>0){
             return true;
         }else{
@@ -122,5 +124,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+
+    public Cursor ViewData(String username) {
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("select * from userInfo where utaID = ?", new String[]{username});
+
+
+        return cursor;
+    }
 
 }

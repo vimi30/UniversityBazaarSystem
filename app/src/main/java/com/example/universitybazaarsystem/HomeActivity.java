@@ -27,11 +27,17 @@ import android.widget.TextView;
         buy_sell = findViewById(R.id.buy_sellTab);
 
         profileButton = findViewById(R.id.profile);
+        String username = getIntent().getStringExtra("username");
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openProfilePage();
+
+                Intent intent = new Intent(HomeActivity.this, ProfilePage.class);
+                intent.putExtra("username",username);
+                startActivity(intent);
+
+
             }
         });
 

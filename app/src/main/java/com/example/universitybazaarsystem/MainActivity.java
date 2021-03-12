@@ -57,7 +57,10 @@ public class MainActivity extends AppCompatActivity {
                     if(checkCred){
                         Toast.makeText(MainActivity.this,"login Successful",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                        intent.putExtra("username",loginUser);
                         startActivity(intent);
+
+
                     }else{
                         Toast.makeText(MainActivity.this,"Invalid Credentials",Toast.LENGTH_SHORT).show();
                     }
