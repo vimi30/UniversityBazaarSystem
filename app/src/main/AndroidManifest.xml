@@ -24,7 +24,9 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".ClubsListingPage" />
         <activity android:name=".RegistrationActivity" />
+        <activity android:name=".ClubDetailsJoin" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

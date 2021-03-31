@@ -23,6 +23,7 @@ public class BuySellPage extends AppCompatActivity implements CustomAdapter.OnPr
     ArrayList<Product> listOfProducts;
     DatabaseHelper dbHelper;
     CustomAdapter customAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

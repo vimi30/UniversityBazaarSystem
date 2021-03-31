@@ -1,11 +1,7 @@
 package com.example.universitybazaarsystem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -35,10 +31,10 @@ public class AddProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_product);
 
         productName = findViewById(R.id.productName);
-        productPrice = findViewById(R.id.enterProductAskingPrice);
+        productPrice = findViewById(R.id.enterName);
         productDescription = findViewById(R.id.productDescription);
-        productImage = findViewById(R.id.productImage);
-        uploadButton = findViewById(R.id.uploadButton);
+        productImage = findViewById(R.id.product_image);
+        uploadButton = findViewById(R.id.addPostButton);
         dbHelper = new DatabaseHelper(this);
 
 
