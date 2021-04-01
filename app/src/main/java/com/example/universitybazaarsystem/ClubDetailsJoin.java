@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class ClubDetailsJoin extends AppCompatActivity {
     private ImageView club_image;
     private Button join_club;
     private Button leave_club;
+    private int count = 0;
 
     DatabaseHelper dbHelper;
 
@@ -39,6 +41,27 @@ public class ClubDetailsJoin extends AppCompatActivity {
         club_image.setImageBitmap(bitmap);
         club_name.setText(intent.getStringExtra("c_name"));
         club_descp.setText(intent.getStringExtra("c_desc"));
+        totalmembers.setText("To join press JOIN CLUB & to leave press LEAVE CLUB");
+
+        join_club.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                join_club.setEnabled(false);
+                totalmembers.setText("You are now member of this club");
+                leave_club.setEnabled(true);
+
+            }
+        });
+
+        leave_club.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                leave_club.setEnabled(false);
+                totalmembers.setText("You are no longer member of this club");
+                join_club.setEnabled(true);
+            }
+        });
 
 
     }

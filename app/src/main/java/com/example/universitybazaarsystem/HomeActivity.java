@@ -17,7 +17,10 @@ import android.widget.TextView;
     private TextView buy_sell, announcePN,announcePP;
 
     DatabaseHelper dbHelper;
-    //Button logoutButton;
+
+
+
+     //Button logoutButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +39,6 @@ import android.widget.TextView;
 
         dbHelper = new DatabaseHelper(this);
 
-        Cursor latestRow = dbHelper.getLatestProduct();
-        announcePN.setText(latestRow.getString(1));
-        announcePP.setText("For: "+latestRow.getString(2));
 
         String username = getIntent().getStringExtra("username");
 
@@ -89,6 +89,21 @@ import android.widget.TextView;
         });
 
     }
+
+     @Override
+     protected void onStart() {
+         super.onStart();
+         Cursor latestRow = dbHelper.getCursorForProductList();
+         if(latestRow.getCount() > 0) {
+             latestRow.moveToLast();
+             announcePN.setText(latestRow.getString(1));
+
+             announcePP.setText("For: " + latestRow.getString(2));
+         }
+
+     }
+
+
     public void openProfilePage(){
         Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
