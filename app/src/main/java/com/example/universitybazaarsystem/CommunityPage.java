@@ -45,8 +45,8 @@ public class CommunityPage extends AppCompatActivity {
 
                 /////enter you email id in username
                 ///enter your password
-                final String username = " ";
-                final String password = " ";
+                final String username = "rajatchaudhary2306@gmail.com";
+                final String password = "daryavsinghAryans123@#";
 
                 String mail_id = sendmail.getText().toString();
                 String messageCnt = message.getText().toString();

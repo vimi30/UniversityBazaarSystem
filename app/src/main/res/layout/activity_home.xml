@@ -47,46 +47,20 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200sp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="40sp"
-                    android:text="Announcement"
+                    android:layout_height="150sp"
+                    android:text="Announcements"
                     android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="#81f662"
-
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="New Product On Sale"
-                    android:textSize="20sp"
-                    android:gravity="center"
+                    android:textColor="@color/cardview_shadow_start_color"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:paddingTop="50sp"
                     />
 
-                <TextView
-                    android:id="@+id/announceProductName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingTop="20sp"
-                    android:paddingBottom="10sp"
-                    android:text="Product Name"
-                    android:textColor="@color/teal_200"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/announceProductPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Price"
-                    android:textColor="@color/teal_200"
-                    android:textSize="20sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

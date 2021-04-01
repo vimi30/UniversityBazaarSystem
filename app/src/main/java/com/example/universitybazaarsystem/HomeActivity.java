@@ -3,7 +3,6 @@
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,13 +13,8 @@ import android.widget.TextView;
     private TextView people;
     private TextView community;
     private TextView clubs;
-    private TextView buy_sell, announcePN,announcePP;
-
-    DatabaseHelper dbHelper;
-
-
-
-     //Button logoutButton;
+    private TextView buy_sell;
+    //Button logoutButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,17 +25,9 @@ import android.widget.TextView;
         community = findViewById(R.id.comunityTab);
         clubs = findViewById(R.id.clubTab);
         buy_sell = findViewById(R.id.buy_sellTab);
-        announcePN = findViewById(R.id.announceProductName);
-        announcePP = findViewById(R.id.announceProductPrice);
-
 
         profileButton = findViewById(R.id.profile);
-
-        dbHelper = new DatabaseHelper(this);
-
-
         String username = getIntent().getStringExtra("username");
-
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,21 +75,6 @@ import android.widget.TextView;
         });
 
     }
-
-     @Override
-     protected void onStart() {
-         super.onStart();
-         Cursor latestRow = dbHelper.getCursorForProductList();
-         if(latestRow.getCount() > 0) {
-             latestRow.moveToLast();
-             announcePN.setText(latestRow.getString(1));
-
-             announcePP.setText("For: " + latestRow.getString(2));
-         }
-
-     }
-
-
     public void openProfilePage(){
         Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
