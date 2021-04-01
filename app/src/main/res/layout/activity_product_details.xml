@@ -71,4 +71,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceOfproduct"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buyButton"
+        android:layout_width="164dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="Buy Now"
+        app:layout_constraintStart_toStartOf="@+id/descriptionOfProduct"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionOfProduct"></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityBazaarSystem">
-        <activity android:name=".ProductDetails"></activity>
+        <activity android:name=".BuyNowPage"></activity>
+        <activity android:name=".ProductDetails" />
         <activity android:name=".AddProductActivity" />
         <activity android:name=".ClubsPage" />
         <activity android:name=".PeoplePage" />
@@ -27,7 +28,6 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".ClubDetailsJoin" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
