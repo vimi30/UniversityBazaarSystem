@@ -134,6 +134,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+//    public Cursor getLatestProduct(){
+//
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor lastRow =  db.rawQuery("SELECT * FROM sellProductInfo WHERE ROWID=(SELECT max(ROWID) FROM sellProductInfo)",null);
+//        lastRow.moveToLast();
+//        System.out.println(lastRow.getCount());
+//        System.out.println(lastRow.getString(1));
+//        System.out.println(lastRow.getString(2));
+//
+//        return lastRow;
+//
+//    }
+
     public Cursor getCursorClubs(){
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("select * from clubsInfo",null);
