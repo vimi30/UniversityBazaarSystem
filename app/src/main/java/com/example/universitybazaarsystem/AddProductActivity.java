@@ -2,7 +2,9 @@ package com.example.universitybazaarsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -54,7 +56,9 @@ public class AddProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String studentId = "1001753108";
+                SharedPreferences usrLoginInfo = getSharedPreferences("loggedInUserInfo", Context.MODE_PRIVATE);
+
+                String studentId = usrLoginInfo.getString("userId","");
                 String pName = productName.getText().toString();
                 String pPrice = productPrice.getText().toString();
                 String pDescription = productDescription.getText().toString();

@@ -3,103 +3,155 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ProfilePage">
 
-
-
-
-    <RelativeLayout
-        android:id="@+id/profile"
-        android:layout_width="match_parent"
-        android:layout_height="500sp">
-
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="161dp"
-            android:layout_height="133dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:layout_weight="1"
-            android:visibility="visible"
-            android:background="@drawable/index" />
-        <TextView
-            android:id="@+id/name"
-            android:layout_below="@+id/imageView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:text="Name: "
-            android:textColor="@color/black"
-            android:textSize="30dp"></TextView>
-        <TextView
-            android:id="@+id/userName"
-            android:layout_below="@+id/imageView"
-            android:layout_toRightOf="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:hint="Full Name"
-            android:textSize="30dp"
-            ></TextView>
-        <TextView
-            android:id="@+id/utaId"
-            android:layout_below="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:text="UTA Id: "
-            android:textColor="@color/black"
-            android:textSize="30dp"></TextView>
-        <TextView
-            android:id="@+id/userUtaId"
-            android:layout_below="@+id/userName"
-            android:layout_toRightOf="@+id/utaId"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="User UTA Id"
-            android:textSize="30dp"
-            ></TextView>
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/utaEmail"
-            android:layout_below="@+id/utaId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:text="UTA Email: "
-            android:textColor="@color/black"
-            android:textSize="30dp"></TextView>
-        <TextView
-            android:id="@+id/userUtaEmail"
-            android:layout_below="@+id/userUtaId"
-            android:layout_toRightOf="@+id/utaEmail"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="User UTA Id"
-            android:textSize="30dp"
-            ></TextView>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="161dp"
+                android:layout_height="133dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/index"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView"
+                    android:layout_marginTop="50dp"
+                    android:text="Name: "
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:layout_weight="1"></TextView>
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView"
+                    android:layout_marginTop="50dp"
+                    android:hint="Full Name"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:layout_weight="1"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/utaId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/name"
+                    android:layout_marginTop="20dp"
+                    android:text="UTA Id: "
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:layout_weight="1"></TextView>
+
+                <TextView
+                    android:id="@+id/userUtaId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/userName"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/utaId"
+                    android:hint="User UTA Id"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:layout_weight="1"></TextView>
 
 
-    </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/utaEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/utaId"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:text="UTA Email: "
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:gravity="center"></TextView>
+
+                <TextView
+                    android:id="@+id/userUtaEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/userUtaId"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/utaEmail"
+                    android:hint="User UTA Id"
+                    android:textSize="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_viewOrderHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="View Order History"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="20dp"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/orderRecyclerView"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
+
+                <Button
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profile"
+                    android:layout_marginTop="20dp"
+                    android:text="Logout"
+                    ></Button>
 
 
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="175sp"
-        android:layout_marginTop="550sp"
+            </LinearLayout>
 
-        android:text="Logout"></Button>
+
+
+        </LinearLayout>
 
 </RelativeLayout>

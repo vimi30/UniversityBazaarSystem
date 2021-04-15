@@ -87,9 +87,9 @@ import android.widget.TextView;
          Cursor latestRow = dbHelper.getCursorForProductList();
          if(latestRow.getCount() > 0) {
              latestRow.moveToLast();
-             announcePN.setText(latestRow.getString(1));
+             announcePN.setText(latestRow.getString(2));
 
-             announcePP.setText("For: " + latestRow.getString(2));
+             announcePP.setText("For: " + latestRow.getString(3));
          }
 
      }
