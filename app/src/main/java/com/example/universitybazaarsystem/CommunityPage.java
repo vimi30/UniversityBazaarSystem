@@ -13,17 +13,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
-/*import javax.mail.Authenticator;
+import javax.mail.Authenticator;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;*/
+import javax.mail.internet.MimeMultipart;
 
 public class CommunityPage extends AppCompatActivity {
     private TextView sendmail, message;
@@ -49,13 +52,21 @@ public class CommunityPage extends AppCompatActivity {
 
                 String mail_id = sendmail.getText().toString();
                 String messageCnt = message.getText().toString();
+
+                String[] myArray = mail_id.split(",");
+                List<String> myList = Arrays.asList(myArray);
+                for(int i=0; i<myList.size(); i++) {
+
+                    if (myList.get(i).equals("") || messageCnt.equals("")) {
+                        Toast.makeText(CommunityPage.this, "Complete the empty fields", Toast.LENGTH_LONG).show();
+                    } else {
                 Properties prop = new Properties();
                 prop.put("mail.smtp.auth","true");
                 prop.put("mail.smtp.starttls.enable","true");
                 prop.put("mail.smtp.host","smtp.gmail.com");
                 prop.put("mail.smtp.port","587");
 
-                /*Authenticator auth = new Authenticator() {
+                Authenticator auth = new Authenticator() {
                     public PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);
                     }
@@ -81,7 +92,9 @@ public class CommunityPage extends AppCompatActivity {
 
                 }catch(MessagingException e){
                     throw new RuntimeException(e);
-                }*/
+                }
+                    }
+                }
 
             }
         });
