@@ -33,26 +33,32 @@ public class ProductDetails extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
 
         Intent intent = getIntent();
+        long productId = intent.getLongExtra("productId",0);
+        Cursor c = dbHelper.getProductById(productId);
+        System.out.println("cursor Size: "+c.getCount());
 
-        byte[] image = intent.getByteArrayExtra("productImage");
+        c.moveToLast();
+
+        byte[] image = c.getBlob(4);
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
         imageOfTheProject.setImageBitmap(bitmap);
-        nameOfTheProduct.setText(intent.getStringExtra("productName"));
-        priceOfTheProduct.setText(intent.getStringExtra("productPrice"));
-        descriptionOfTheProject.setText(intent.getStringExtra("productDescription"));
+        nameOfTheProduct.setText(c.getString(1));
+        priceOfTheProduct.setText(c.getString(2));
+        descriptionOfTheProject.setText(c.getString(3));
 
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buyNow();
+                buyNow(productId);
             }
         });
 
 
 
     }
-    public void buyNow(){
+    public void buyNow(long productId){
         Intent i = new Intent(this, BuyNowPage.class);
+        i.putExtra("productId",productId);
         startActivity(i);
     }
 }

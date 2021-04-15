@@ -2,7 +2,10 @@ package com.example.universitybazaarsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
         forgotPasswordLink = findViewById(R.id.forgotPasswordlink);
         dbHelper = new DatabaseHelper(this);
 
+        SharedPreferences loginStatus = getSharedPreferences("loggedInUserInfo", Context.MODE_PRIVATE);
+
+        String alreadyLoggedIn = loginStatus.getString("alreadyLoggedIn","");
+
+        if(alreadyLoggedIn.equals("true")){
+            Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+            startActivity(intent);
+        }
+
 
         forgotPasswordLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +68,21 @@ public class MainActivity extends AppCompatActivity {
                     boolean checkCred  = dbHelper.checkCredentials(loginUser,loginPass);
                     if(checkCred){
                         Toast.makeText(MainActivity.this,"login Successful",Toast.LENGTH_SHORT).show();
+
+                        Cursor cursor = dbHelper.ViewData(loginUser);
+                        SharedPreferences usrLoginInfo = getSharedPreferences("loggedInUserInfo", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = usrLoginInfo.edit();
+                        if(cursor.moveToNext()){
+                            editor.putString("alreadyLoggedIn","true");
+                            editor.putString("userName",cursor.getString(0));
+                            editor.putString("userId",cursor.getString(1));
+                            editor.putString("userEmail",cursor.getString(2));
+                            editor.apply();
+
+                        }
+                        cursor.close();
+
                         Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-                        intent.putExtra("username",loginUser);
                         startActivity(intent);
 
 

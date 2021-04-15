@@ -23,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create Table userInfo(userName TEXT, utaID TEXT primary key, utaMail TEXT, password TEXT )");
         db.execSQL("create Table sellProductInfo(utaID TEXT, productName TEXT, productPrice TEXT, productDescription TEXT, productImage BLOB )");
         db.execSQL("create Table clubsInfo(utaID TEXT, c_name TEXT, c_desc TEXT, club_img BLOB)");
+        db.execSQL("create Table orders(buyerName TEXT, buyerId TEXT, buyerAddress TEXT, buyerPhoneNumber TEXT ,productId TEXT, productName TEXT, productImage BLOB, productPrice TEXT, sellerId TEXT)");
 
     }
 
@@ -130,8 +131,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getCursorForProductList(){
 
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("select * from sellProductInfo",null);
 
+        Cursor cursor = db.query("sellProductInfo", new String[]{"rowid","*"},null,null,null,null,null);
+//        mySQLiteHelper.getReadableDatabase().query(sellProductInfo, new String[] { "ROWID", "*" }, where, null, null, null, null);
+//        return db.rawQuery("select * from sellProductInfo",null);
+
+        return cursor;
+
+    }
+
+    public Cursor getProductById(Long productId){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery("SELECT * FROM sellProductInfo WHERE ROWID=?",new String[]{String.valueOf(productId)});
+        return cursor;
     }
 
 //    public Cursor getLatestProduct(){
@@ -164,5 +177,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+
+    public boolean insertOrder(String buyer_name, String buyer_id, String buyer_address, String buyer_phone_number ,String product_id, String product_name,byte[] product_image, String product_price, String seller_id){
+
+//        "buyerName TEXT, buyerId TEXT, buyerAddress TEXT, productId TEXT, productName TEXT, productImage BLOB, productPrice TEXT, sellerId TEXT, sellerName TEXT"
+//buyerPhoneNumber
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("buyerName", buyer_name);
+        cv.put("buyerId", buyer_id);
+        cv.put("buyerAddress", buyer_address);
+        cv.put("buyerPhoneNumber", buyer_phone_number);
+        cv.put("productId", product_id);
+        cv.put("productName", product_name);
+        cv.put("productPrice", product_price);
+        cv.put("productImage", product_image);
+        cv.put("sellerId", seller_id);
+
+        long inserted = db.insert("orders",null,cv);
+
+        if(inserted==-1){
+            return false;
+        } else{
+            return true;
+        }
+    }
+
+    public Cursor getOrdersByUserId(String userID){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("select * from orders where buyerId = ?", new String[]{userID});
+
+        return cursor;
+
+
+    }
+
 
 }

@@ -10,10 +10,8 @@ import android.database.CursorWindow;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridView;
 
 import java.lang.reflect.Field;
-import java.sql.Blob;
 import java.util.ArrayList;
 
 public class BuySellPage extends AppCompatActivity implements CustomAdapter.OnProductListener {
@@ -48,17 +46,18 @@ public class BuySellPage extends AppCompatActivity implements CustomAdapter.OnPr
 
         Cursor cursor = dbHelper.getCursorForProductList();
         while (cursor.moveToNext()){
-            String stuId = cursor.getString(0);
+            long productId = cursor.getLong(0);
+            String stuId = cursor.getString(1);
             //System.out.println(stuId);
-            String productName = cursor.getString(1);
+            String productName = cursor.getString(2);
             //System.out.println(productName);
-            String productPrice = cursor.getString(2);
+            String productPrice = cursor.getString(3);
             //System.out.println(productPrice);
-            String productDescription = cursor.getString(3);
+            String productDescription = cursor.getString(4);
             //System.out.println(productDescription);
-            byte[] productImage = cursor.getBlob(4);
+            byte[] productImage = cursor.getBlob(5);
 
-            listOfProducts.add(new Product(stuId,productName,productPrice,productDescription,productImage));
+            listOfProducts.add(new Product(stuId,productName,productPrice,productDescription, productId, productImage));
 
         }
 
@@ -82,10 +81,13 @@ public class BuySellPage extends AppCompatActivity implements CustomAdapter.OnPr
     public void onProductClick(int position) {
         listOfProducts.get(position);
         Intent intent = new Intent(BuySellPage.this,ProductDetails.class);
-        intent.putExtra("productName",listOfProducts.get(position).getProName());
-        intent.putExtra("productPrice",listOfProducts.get(position).getProPrice());
-        intent.putExtra("productImage",listOfProducts.get(position).getProImage());
-        intent.putExtra("productDescription",listOfProducts.get(position).getProDescription());
+
+        intent.putExtra("productId",listOfProducts.get(position).getProductId());
+
+//        intent.putExtra("productName",listOfProducts.get(position).getProName());
+//        intent.putExtra("productPrice",listOfProducts.get(position).getProPrice());
+//        intent.putExtra("productImage",listOfProducts.get(position).getProImage());
+//        intent.putExtra("productDescription",listOfProducts.get(position).getProDescription());
         startActivity(intent);
 
 

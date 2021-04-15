@@ -2,7 +2,7 @@ package com.example.universitybazaarsystem;
 
 import android.os.Bundle;
 import android.os.Message;
-import javax.mail.Session;
+//import javax.mail.Session;
 
 import android.os.StrictMode;
 import android.os.StrictMode.ThreadPolicy;
@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Properties;
 
-import javax.mail.Authenticator;
+/*import javax.mail.Authenticator;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
@@ -23,12 +23,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.MimeMultipart;*/
 
 public class CommunityPage extends AppCompatActivity {
-
     private TextView sendmail, message;
-    private Button sendemailbtn;
+   private Button sendemailbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class CommunityPage extends AppCompatActivity {
                 prop.put("mail.smtp.host","smtp.gmail.com");
                 prop.put("mail.smtp.port","587");
 
-                Authenticator auth = new Authenticator() {
+                /*Authenticator auth = new Authenticator() {
                     public PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);
                     }
@@ -82,7 +81,7 @@ public class CommunityPage extends AppCompatActivity {
 
                 }catch(MessagingException e){
                     throw new RuntimeException(e);
-                }
+                }*/
 
             }
         });
