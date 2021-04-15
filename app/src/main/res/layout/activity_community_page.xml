@@ -4,7 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".CommunityPage">
+
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="388dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="31dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="65dp"
+        android:gravity="center"
+        android:text="Enter E-mail id of recipient in the below field. If there are more than one recipient separate email-id with comma"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="#DC143C"
+        app:layout_constraintBottom_toTopOf="@+id/sendmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/sendmail"
@@ -48,7 +70,7 @@
         android:id="@+id/emailbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="139dp"
+        android:layout_marginStart="160dp"
         android:layout_marginLeft="139dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="179dp"
@@ -59,4 +81,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create Table userInfo(userName TEXT, utaID TEXT primary key, utaMail TEXT, password TEXT )");
         db.execSQL("create Table sellProductInfo(utaID TEXT, productName TEXT, productPrice TEXT, productDescription TEXT, productImage BLOB )");
         db.execSQL("create Table clubsInfo(utaID TEXT, c_name TEXT, c_desc TEXT, club_img BLOB)");
+        db.execSQL("create table discussion_record(utaID TEXT, comment_post TEXT)");
 
     }
 
@@ -32,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("drop Table if exists userInfo");
         db.execSQL("drop Table if exists sellProductInfo");
         db.execSQL("drop Table if exists clubsInfo ");
+        db.execSQL("drop Table if exists discussion_record");
 
     }
 
@@ -126,6 +128,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean insertComments(String uta_ID, String comment){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("utaId", uta_ID);
+        cv.put("comment_post",comment);
+
+        long inserted = db.insert("discussion_record", null,cv);
+
+        return inserted != -1;
+    }
+
 
     public Cursor getCursorForProductList(){
 
@@ -137,6 +150,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getCursorClubs(){
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("select * from clubsInfo",null);
+    }
+
+    public Cursor getCursorComments(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("select * from discussion_record", null);
     }
 
 
@@ -151,5 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+
 
 }

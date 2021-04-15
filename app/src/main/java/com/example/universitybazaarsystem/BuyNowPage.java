@@ -35,10 +35,10 @@ public class BuyNowPage extends AppCompatActivity {
                 if(address.equals("") || phone.equals("") || card.equals("")){
                     Toast.makeText(BuyNowPage.this, "Enter All Details", Toast.LENGTH_LONG).show();
                 }
-                else if(phone.length()<10){
+                else if(phone.length() !=10){
                     Toast.makeText(BuyNowPage.this, "Enter 10 digit phone number", Toast.LENGTH_LONG).show();
                 }
-                else if(card.length()<16){
+                else if(card.length() != 16){
                     Toast.makeText(BuyNowPage.this, "Enter 16 digit card number", Toast.LENGTH_LONG).show();
                 }
                 else {
