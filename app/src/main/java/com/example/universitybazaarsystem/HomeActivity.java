@@ -1,6 +1,7 @@
  package com.example.universitybazaarsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,10 +12,11 @@ import android.widget.TextView;
 
  public class HomeActivity extends AppCompatActivity {
     private Button profileButton;
-    private TextView people;
-    private TextView community;
-    private TextView clubs;
-     private TextView buy_sell, announcePN,announcePP;
+    private CardView people;
+    private CardView community;
+    private CardView clubs;
+    private CardView buy_sell;
+    private TextView announcePN,announcePP;
 
      DatabaseHelper dbHelper;
     @Override
@@ -24,7 +26,7 @@ import android.widget.TextView;
 
 
         people = findViewById(R.id.peopleTab);
-        community = findViewById(R.id.comunityTab);
+        community = findViewById(R.id.communityTab);
         clubs = findViewById(R.id.clubTab);
         buy_sell = findViewById(R.id.buy_sellTab);
         announcePN = findViewById(R.id.announceProductName);

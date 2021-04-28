@@ -102,12 +102,11 @@ public class ProfilePage extends AppCompatActivity {
         while (cursor.moveToNext()){
 
             String productName = cursor.getString(5);
-            //System.out.println(productName);
+            
+
             String productPrice = cursor.getString(7);
 
             String seller_id = cursor.getString(8);
-            //System.out.println(productPrice);
-            //System.out.println(productDescription);
 
 
             Cursor cursor1 = dbHelper.ViewData(seller_id);

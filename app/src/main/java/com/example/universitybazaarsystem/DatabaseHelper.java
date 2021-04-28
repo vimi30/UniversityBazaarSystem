@@ -3,9 +3,14 @@ package com.example.universitybazaarsystem;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorWindow;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.TextView;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 
@@ -149,6 +154,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
+    public List<String> getProductNamesList(){
+
+        List<String> listOfProductNames = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+        Cursor cursor = db.query("sellProductInfo", new String[]{"rowid","*"},null,null,null,null,null);
+//        mySQLiteHelper.getReadableDatabase().query(sellProductInfo, new String[] { "ROWID", "*" }, where, null, null, null, null);
+//        return db.rawQuery("select * from sellProductInfo",null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+                listOfProductNames.add(cursor.getString(cursor.getColumnIndex("productName")));
+            }while (cursor.moveToNext());
+
+        }
+
+        return listOfProductNames;
+
+    }
+
     public Cursor getCursorForProductList(){
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -231,6 +265,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from orders where buyerId = ?", new String[]{userID});
 
         return cursor;
+
+
+    }
+
+    public List<Product> getSearchResult(String name){
+
+        List<Product> products = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("sellProductInfo", new String[]{"rowid","*"},"productName LIKE ?",new String[]{name},null,null,null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+
+                products.add(new Product(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getLong(0),cursor.getBlob(5)));
+
+            }while (cursor.moveToNext());
+
+        }
+
+
+        return products;
 
 
     }

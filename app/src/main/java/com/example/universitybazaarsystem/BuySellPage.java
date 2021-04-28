@@ -8,17 +8,25 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.CursorWindow;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BuySellPage extends AppCompatActivity implements CustomAdapter.OnProductListener {
 
     private Button postButton;
-    RecyclerView viewListOfProducts;
+    MaterialSearchBar materialSearchBar;
+    List<String> suggestionList = new ArrayList<>();
+    RecyclerView rv_viewListOfProducts;
     ArrayList<Product> listOfProducts;
+
     DatabaseHelper dbHelper;
     CustomAdapter customAdapter;
 
@@ -27,9 +35,60 @@ public class BuySellPage extends AppCompatActivity implements CustomAdapter.OnPr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_sell_page);
         postButton = findViewById(R.id.addPostButton);
-        viewListOfProducts = findViewById(R.id.listRecyclerView);
+        rv_viewListOfProducts = findViewById(R.id.listRecyclerView);
+        materialSearchBar = findViewById(R.id.ms_search_bar);
         listOfProducts = new ArrayList<>();
         dbHelper = new DatabaseHelper(this);
+        materialSearchBar.setHint("Search");
+        loadSuggestionList();
+        materialSearchBar.addTextChangeListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                List<String> suggest = new ArrayList<>();
+
+                for(String search:suggestionList){
+                    if(search.toLowerCase().contains(materialSearchBar.getText().toLowerCase())){
+                        suggest.add(search);
+                    }
+                }
+
+                materialSearchBar.setLastSuggestions(suggest);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                if (!enabled){
+
+                    rv_viewListOfProducts.setAdapter(customAdapter);
+
+                }
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+
+                getSearchResult(text.toString());
+
+            }
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+
+            }
+        });
         //pla = new ProductListAdapter(this,R.layout.product_items_layout,listOfProducts);
         //gridView.setAdapter(pla);
 
@@ -62,8 +121,8 @@ public class BuySellPage extends AppCompatActivity implements CustomAdapter.OnPr
         }
 
         customAdapter = new CustomAdapter(BuySellPage.this,listOfProducts,this);
-        viewListOfProducts.setAdapter(customAdapter);
-        viewListOfProducts.setLayoutManager(new LinearLayoutManager(BuySellPage.this));
+        rv_viewListOfProducts.setAdapter(customAdapter);
+        rv_viewListOfProducts.setLayoutManager(new LinearLayoutManager(BuySellPage.this));
         
 
         postButton.setOnClickListener(new View.OnClickListener() {
@@ -75,19 +134,31 @@ public class BuySellPage extends AppCompatActivity implements CustomAdapter.OnPr
 
             }
         });
+
+
+
+    }
+
+    private void getSearchResult(String name) {
+
+        customAdapter = new CustomAdapter(BuySellPage.this,new ArrayList(dbHelper.getSearchResult(name)),this);
+        rv_viewListOfProducts.setAdapter(customAdapter);
+
+
+    }
+
+    private void loadSuggestionList() {
+
+        suggestionList = dbHelper.getProductNamesList();
+        materialSearchBar.setLastSuggestions(suggestionList);
+
     }
 
     @Override
     public void onProductClick(int position) {
         listOfProducts.get(position);
         Intent intent = new Intent(BuySellPage.this,ProductDetails.class);
-
         intent.putExtra("productId",listOfProducts.get(position).getProductId());
-
-//        intent.putExtra("productName",listOfProducts.get(position).getProName());
-//        intent.putExtra("productPrice",listOfProducts.get(position).getProPrice());
-//        intent.putExtra("productImage",listOfProducts.get(position).getProImage());
-//        intent.putExtra("productDescription",listOfProducts.get(position).getProDescription());
         startActivity(intent);
 
 
