@@ -10,6 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
  public class HomeActivity extends AppCompatActivity {
     private Button profileButton;
     private CardView people;
@@ -23,6 +29,8 @@ import android.widget.TextView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        set_advertisements();
 
 
         people = findViewById(R.id.peopleTab);
@@ -98,6 +106,26 @@ import android.widget.TextView;
     public void openProfilePage(){
         Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
+    }
+
+    private void set_advertisements(){
+
+        ImageSlider imageSlider = findViewById(R.id.slidingwindow);
+
+        List<SlideModel> slide_models = new ArrayList<>();
+        List<Integer> new_list = new ArrayList<>();
+        new_list.add(R.drawable.default_image);
+        //new_list.add(R.drawable.pickachu);
+        new_list.add(R.drawable.image2);
+        new_list.add(R.drawable.image3);
+        new_list.add(R.drawable.image4);
+        slide_models.add(new SlideModel(new_list.get(0)));
+        slide_models.add(new SlideModel(new_list.get(1)));
+        slide_models.add(new SlideModel(new_list.get(2)));
+        slide_models.add(new SlideModel(new_list.get(3)));
+
+        imageSlider.setImageList(slide_models,true);
+
     }
 }
 

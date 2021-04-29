@@ -47,8 +47,8 @@ public class CommunityPage extends AppCompatActivity {
 
                 /////enter you email id in username
                 ///enter your password
-                final String username = "";
-                final String password = "";
+                final String username = "rajatchaudhary2306@gmail.com";
+                final String password = "heavyboozeflow123@#";
 
                 String mail_id = sendmail.getText().toString();
                 String messageCnt = message.getText().toString();
@@ -80,7 +80,7 @@ public class CommunityPage extends AppCompatActivity {
                     Transport transport = session.getTransport();
                     MimeMessage msg = new MimeMessage(session);
                     msg.setFrom(new InternetAddress(username));
-                    msg.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(mail_id));
+                    msg.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(myList.get(i)));
                     msg.setSubject("Received from UnivBazSys");
                     MimeBodyPart msgBody = new MimeBodyPart();
                     msgBody.setContent(message, messageCnt);
